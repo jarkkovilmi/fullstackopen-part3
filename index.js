@@ -1,7 +1,17 @@
 const express = require('express')
+const morgan = require('morgan')
+
 const app = express()
 
 app.use(express.json())
+
+morgan.token("post-body", (req, res) => {
+	if (req.method === "POST") 
+		return JSON.stringify(req.body)
+	return null
+})
+
+app.use(morgan(':method :url :status :res[content-length] - :response-time ms :post-body'))
 
 let persons = [
 	{
@@ -61,9 +71,6 @@ const generateId = () => {
 }
 
 app.post('/api/persons', (request, response) => {
-	console.log('Method:', request.method)
-  console.log('Path:  ', request.path)
-  console.log('Body:  ', request.body)
   const body = request.body
 
   if (!body.name || !body.number) {
