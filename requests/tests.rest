@@ -1,0 +1,13 @@
+GET http://localhost:8080/api/persons
+###
+GET http://localhost:8080/api/persons/63b99c6d52275b53f1876143
+###
+DELETE http://localhost:8080/api/persons/63b99c6d52275b53f18761434
+###
+POST http://localhost:8080/api/persons
+Content-Type: application/json
+
+{
+	"name": "Clark Kent",
+	"number": "32-44-234123"
+}

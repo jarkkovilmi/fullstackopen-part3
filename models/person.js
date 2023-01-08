@@ -1,11 +1,10 @@
-require('dotenv').config()
 const mongoose = require('mongoose')
 
 mongoose.set('strictQuery', true)
 
 const url = process.env.MONGODB_URI
 
-console.log('connecting to', url)
+console.log('connecting to mongodb+srv://fullstack:<password>@cluster0.lzturld.mongodb.net/personApp?retryWrites=true&w=majority')
 
 mongoose.connect(url)
 	.then(result => {
